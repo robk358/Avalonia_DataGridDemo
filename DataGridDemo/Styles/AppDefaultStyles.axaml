@@ -1,0 +1,111 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <!--  Add Controls for Previewer Here  -->
+      <StackPanel Orientation="Vertical">
+        <TabControl>
+          <TabItem Header="Selected Tab" IsSelected="True" />
+          <TabItem Header="Unselected Tab" IsSelected="False" />
+        </TabControl>
+
+        <TabControl Classes="small">
+          <TabItem Classes="small" Header="Selected Tab" IsSelected="True" />
+          <TabItem Classes="small" Header="Test Tab" IsSelected="False" />
+        </TabControl>
+
+      </StackPanel>
+    </Border>
+  </Design.PreviewWith>
+
+  <!--  Add Styles Here  -->
+
+  <!--<Style Selector="TabControl">
+		<Setter Property="Background" Value="Gray"/>
+	</Style>-->
+
+  <!--<Style Selector="TabItem">
+		<Setter Property="FontSize" Value="14"/>
+	</Style>-->
+
+  <Style Selector="TabControl.small">
+    <!-- <Setter Property="Background" Value="Gray"/> -->
+    <!-- <Setter Property="FontStyle" Value="Italic"/> -->
+  </Style>
+
+  <Style Selector="TabItem.small">
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="Foreground" Value="Black" />
+    <Setter Property="FontSize" Value="12" />
+    <Setter Property="BorderBrush" Value="LightGray" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="1" />
+    <Setter Property="Padding" Value="4,2" />
+  </Style>
+
+  <Style Selector="TabItem.customlayout_default">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate>
+          <Border Name="PART_LayoutRoot" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}">
+            <Panel>
+              <ContentPresenter Name="PART_ContentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" RecognizesAccessKey="True" />
+              <Border Name="PART_SelectedPipe" Background="{DynamicResource TabItemHeaderSelectedPipeFill}" CornerRadius="{DynamicResource ControlCornerRadius}" IsVisible="False" />
+            </Panel>
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style Selector="DataGrid">
+    <Setter Property="GridLinesVisibility" Value="All" />
+    <Setter Property="MinColumnWidth" Value="10" />
+    <Setter Property="IsReadOnly" Value="True" />
+    <Setter Property="AutoGenerateColumns" Value="False" />
+    <Setter Property="CanUserReorderColumns" Value="False" />
+    <Setter Property="BorderBrush" Value="Black" />
+  </Style>
+
+  <Style Selector="DataGrid:focus DataGridCell:current /template/ Grid#FocusVisual">
+    <Setter Property="IsVisible" Value="False" />
+    <Setter Property="Background" Value="Red" />
+  </Style>
+
+  <Style Selector="DataGridColumnHeader">
+    <Setter Property="FontSize" Value="12" />
+    <Setter Property="Background" Value="Yellow" />
+    <Setter Property="FontWeight" Value="Bold" />
+    <Setter Property="Foreground" Value="Black" />
+    <Setter Property="AreSeparatorsVisible" Value="True" />
+  </Style>
+
+  <!--<Style Selector="DataGridRow">
+		<Setter Property="FontStyle" Value="Italic"/>
+	</Style>-->
+
+  <Style Selector="DataGridCell">
+    <Setter Property="FontSize" Value="12" />
+    <!--<Setter Property="FontWeight" Value="DemiBold"/>-->
+  </Style>
+
+  <Style Selector="DataGrid DataGridRow:nth-child(2n)">
+    <Setter Property="Background" Value="#20808080" />
+  </Style>
+
+  <Style Selector="TreeDataGrid TreeDataGridRow:nth-last-child(2n)">
+    <Setter Property="Background" Value="#20808080" />
+  </Style>
+  <Style Selector="TreeDataGridColumnHeader">
+    <Setter Property="Background" Value="Yellow" />
+    <Setter Property="FontSize" Value="12" />
+    <Setter Property="FontWeight" Value="Bold" />
+  </Style>
+  <Style Selector="TreeDataGrid TreeDataGridRow">
+    <Setter Property="FontSize" Value="12" />
+  </Style>
+  <Style Selector="TreeDataGridCheckBoxCell">
+    <Setter Property="HorizontalAlignment" Value="Center" />
+  </Style>
+
+</Styles>

@@ -1,0 +1,65 @@
+<UserControl x:Class="DataGridDemo.Views.DemoDataGridView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:DataGridDemo.ViewModels"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:DataType="vm:DemoDataGridViewModel"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <!--  hide sort icon on datagrid  -->
+        <x:Double x:Key="DataGridSortIconMinWidth">0</x:Double>
+    </UserControl.Resources>
+
+    <Design.DataContext>
+        <!--  This only sets the DataContext for the previewer in an IDE, to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)  -->
+        <vm:DemoDataGridViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="auto,10,auto,10,*">
+      
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Label Content="Datacontext=" Foreground="Purple" />
+            <TextBlock VerticalAlignment="Center" Foreground="Purple" Text="{Binding}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Command="{Binding PopulateDemoDataGridCommand}" Content="Populate DataGrid" />
+            <Button Command="{Binding ClearDemoDataGridCommand}" Content="Clear DataGrid" />
+        </StackPanel>
+
+        <DataGrid Grid.Row="4" CanUserSortColumns="False" ItemsSource="{Binding DemoDataGridList}" RowHeight="22" SelectionMode="Single">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Header="Id" />
+
+                <DataGridTextColumn Width="*" Binding="{Binding ProjectName}" Header="Name" />
+
+                <DataGridTemplateColumn Header="Quantity">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="{Binding UsedParts, StringFormat='{}{0:N2}'}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Runs">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="{Binding ProjectRuns, StringFormat='{}{0:N0}'}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Binding="{Binding LastRunDate}" Header="Last Run" />
+
+                <DataGridTextColumn Binding="{Binding ProjectDate}" Header="Date" />
+
+                <DataGridCheckBoxColumn Binding="{Binding ProjectClosed}" Header="Closed" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

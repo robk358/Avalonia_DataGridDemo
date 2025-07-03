@@ -1,0 +1,27 @@
+<Application x:Class="DataGridDemo.App"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:DataGridDemo"
+             RequestedThemeVariant="Default">
+    <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <!--  https://docs.avaloniaui.net/docs/basics/user-interface/styling/themes/fluent  -->
+        <!--<FluentTheme />-->
+        <FluentTheme DensityStyle="Compact" />
+
+        <!--<SimpleTheme  />-->
+        <StyleInclude Source="/Styles/AppDefaultStyles.axaml" />
+
+        <!--  required for treedatagrid -->
+        <StyleInclude Source="avares://Avalonia.Controls.TreeDataGrid/Themes/Fluent.axaml" />
+
+        <!--  required for datagrid -->
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
+
+    </Application.Styles>
+</Application>

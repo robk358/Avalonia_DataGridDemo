@@ -1,0 +1,46 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:DataGridDemo.Views"
+             xmlns:vm="clr-namespace:DataGridDemo.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DataGridDemo.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+  <Grid RowDefinitions="auto,*">
+    <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" >
+      <Label Content="Datacontext=" Foreground="Purple"/>
+      <TextBlock Text="{Binding}" Foreground="Purple" VerticalAlignment="Center" />
+    </StackPanel>
+    
+    <!--
+            Forwarding the appropriate view model to the view.
+            This should match the type of VM that the view expects in its x:DataType attribute.
+        -->
+    <TabControl Grid.Row="1" Classes="small">
+
+      <TabItem Classes="small" Header="DataGridView" IsSelected="True">
+        <views:DemoDataGridView DataContext="{Binding DataGridVM}" />
+      </TabItem>
+      <TabItem Classes="small" Header="TreeDataGrid">
+        <views:DemoTreeDataGridView DataContext="{Binding TreeDataGridVM}" />
+      </TabItem>
+      
+      <TabItem Classes="small" Header="DataGridView (ViewLocator)">
+        <ContentControl Content="{Binding DataGridVM}"/>
+      </TabItem>
+      <TabItem Classes="small" Header="TreeDataGrid (ViewLocator)">
+        <ContentControl Content="{Binding TreeDataGridVM}"/>
+      </TabItem>
+      
+    </TabControl>
+
+  </Grid>
+</UserControl>
